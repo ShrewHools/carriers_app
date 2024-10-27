@@ -11,5 +11,6 @@ test:
 production:
   <<: *default
   database: carriers_app_production
-  username: carriers_app
-  password: <%= ENV['CARRIERS_APP_DATABASE_PASSWORD'] %>
+  username: <%= ENV.fetch("DB_USERNAME") { 'carriers_app' } %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
