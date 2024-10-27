@@ -9,7 +9,7 @@ module Bids
     end
 
     def gather_data
-      @bid_details = @carrier.bids.includes(:shipping_route, :load_type).map do |bid|
+      @bid_details = @carrier.bids.includes(:shipping_route, :load_type).order(:shipping_route_id).map do |bid|
         lowest_bid = lowest_bids[[bid.load_type_id, bid.shipping_route_id]]
         Bids::Detail.new(bid, lowest_bid)
       end

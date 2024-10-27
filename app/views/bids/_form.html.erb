@@ -1,0 +1,43 @@
+<%= form_for @bid, html: { class: 'bid_form' } do |f| %>
+  <div class="mb-3">
+    <%= f.label :shipping_route_id, 'Select Route', class: 'form-label' %>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-truck"></i></span>
+      <%= f.select :shipping_route_id,
+                   options_for_select(ShippingRoute.all.map { |p| ["#{p.origin} → #{p.destination}", p.id] },
+                                      f.object.shipping_route_id), {},
+                   class: 'form-select' %>
+    </div>
+    <small class="form-text text-white fst-italic">Choose the route for your delivery bid.</small>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :load_type_id, 'Select Load Type', class: 'form-label' %>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
+      <%= f.select :load_type_id,
+                   options_for_select(LoadType.all.map {|p| [p.name, p.id]}, f.object.load_type_id),
+                   {}, class: 'form-select' %>
+    </div>
+    <small class="form-text text-white fst-italic">Specify the load size for this bid.</small>
+  </div>
+
+  <div id="minBidInfo" class="mb-3">
+    <strong>Current Lowest Bid:</strong>
+    <div class="input-group">
+      <span class="input-group-text">$</span>
+      <span id="minBidValue" class="input-group-text"></span>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :price, 'Bid Price', class: 'form-label' %>
+    <div class="input-group">
+      <span class="input-group-text">$</span>
+      <%= f.number_field :price, placeholder: 'Enter your bid price', class: 'form-control' %>
+    </div>
+    <small class="form-text text-white fst-italic">Consider recent winning bids for optimal pricing.</small>
+  </div>
+
+  <%= f.submit 'Submit Bid', class: 'btn btn-primary' %>
+<% end %>
