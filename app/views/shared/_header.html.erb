@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if @current_carrier %>
+          <li class="nav-item">
+            <%= link_to 'Your Bids Overview', bids_path, class: 'btn btn-primary' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'New Bid', new_bid_path, class: 'btn btn-success' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Logout', logout_path, method: :delete, class: 'btn btn-danger' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signInModal">
+              Sign In/Up as a Carrier
+            </button>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

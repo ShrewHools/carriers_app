@@ -1,0 +1,11 @@
+nav {
+  .nav-item {
+    a {
+      margin-right: 10px;
+
+      @include breakpoint(xs) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
