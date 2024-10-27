@@ -1,0 +1,58 @@
+<section id="bids_wrap">
+  <h1 class="text-center">Your Bids Overview</h1>
+  <p class="text-center">Track your current bids, check if you're leading, and make adjustments to win more contracts.</p>
+
+  <%= link_to 'New Bid', new_bid_path, class: 'btn btn-success' %>
+
+  <% @bids_presenter.on_present do %>
+    <div class="info_wrap">
+      <div class="header">
+        <div class="route">Route</div>
+        <div class="load_type">Load Type</div>
+        <div class="your_bid">Your Bid</div>
+        <div class="lowest_bid">Lowest Bid</div>
+        <div class="status">Status</div>
+        <div class="actions">Actions</div>
+      </div>
+      <% @bids_presenter.bid_details.each do |bid_detail| %>
+        <div class="bid_wrap">
+          <div class="route mob_wh">
+            <span class="mob_header">Route:</span>
+            <%= bid_detail.route %>
+          </div>
+          <div class="load_type mob_wh">
+            <span class="mob_header">Load Type:</span>
+            <%= bid_detail.load_type %>
+          </div>
+          <div class="your_bid mob_wh">
+            <span class="mob_header">Your Bid:</span>
+            <%= bid_detail.price %>
+          </div>
+          <div class="lowest_bid mob_wh">
+            <span class="mob_header">Lowest Bid:</span>
+            <%= bid_detail.lowest_price %>
+          </div>
+          <div class="status mob_wh">
+            <span class="mob_header">Status:</span>
+            <% bid_detail.on_win do %>
+              <span class="badge bg-success">Winning</span>
+            <% end %>
+            <% bid_detail.on_lose do %>
+              <span class="badge bg-danger">Outbid</span>
+            <% end %>
+          </div>
+          <div class="actions">
+            <%= link_to 'Edit', edit_bid_path(bid_detail.bid.id), class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'Delete', bid_path(bid_detail.bid.id), method: :delete, data: { confirm: 'You sure?' },
+                        class: 'btn btn-danger btn-sm' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to 'New Bid', new_bid_path, class: 'btn btn-success ' %>
+  <% end %>
+
+  <% @bids_presenter.on_empty do %>
+    <p class="mt-4">You haven’t placed any bids yet. Start by creating a new bid and stay ahead of the competition!</p>
+  <% end %>
+</section>

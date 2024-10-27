@@ -11,8 +11,10 @@
   </head>
 
   <body>
-  <%= render 'header' %>
+  <%= render 'shared/header' %>
+  <%= render 'shared/flash' %>
   <%= yield %>
-  <%= render 'footer' %>
+  <%= render 'shared/footer' %>
+  <%= render 'shared/sign_in_modal' %>
   </body>
 </html>
