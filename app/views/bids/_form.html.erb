@@ -34,7 +34,7 @@
     <%= f.label :price, 'Bid Price', class: 'form-label' %>
     <div class="input-group">
       <span class="input-group-text">$</span>
-      <%= f.number_field :price, placeholder: 'Enter your bid price', class: 'form-control' %>
+      <%= f.number_field :price, step: '0.01', placeholder: 'Enter your bid price', class: 'form-control' %>
     </div>
     <small class="form-text text-white fst-italic">Consider recent winning bids for optimal pricing.</small>
   </div>

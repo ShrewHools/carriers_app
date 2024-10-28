@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class BidsController < ApplicationController
+  include ActionView::Helpers::NumberHelper
+
   before_action :check_login
   before_action :set_bid, only: %i[edit update destroy]
 
@@ -42,7 +44,7 @@ class BidsController < ApplicationController
     lowest_bid = Bid.where(shipping_route_id: route, load_type_id: load_type).minimum(:price)
     return render json: { error: I18n.t('bids.not_found_combination') }, status: 404 unless lowest_bid
 
-    render json: { lowestBid: lowest_bid }, status: 200
+    render json: { lowestBid: number_with_precision(lowest_bid, precision: 2) }, status: 200
   end
 
   def destroy
