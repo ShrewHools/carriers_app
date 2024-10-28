@@ -10,7 +10,4 @@ test:
   database: carriers_app_test
 production:
   <<: *default
-  database: carriers_app_production
-  username: <%= ENV.fetch("DB_USERNAME") { 'carriers_app' } %>
-  password: <%= ENV['DB_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
