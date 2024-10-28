@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Bids::Detail do
+  include ActionView::Helpers::NumberHelper
+
   subject { described_class.new(bid, lowest_bid) }
 
   let(:bid) { create(:bid, carrier: carrier, load_type: load_type, shipping_route: shipping_route, price: 1000.00) }
@@ -18,11 +22,11 @@ describe Bids::Detail do
   end
 
   it '#price' do
-    expect(subject.price).to eq("#{bid.price} $")
+    expect(subject.price).to eq("#{number_with_precision(bid.price, precision: 2)} $")
   end
 
   it '#lowest_price' do
-    expect(subject.lowest_price).to eq("#{lowest_bid} $")
+    expect(subject.lowest_price).to eq("#{number_with_precision(lowest_bid, precision: 2)} $")
   end
 
   it '#on_win' do
