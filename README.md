@@ -1,4 +1,5 @@
 # 🚛 Logistics Bidding Platform
+[ShipBid](https://ship-bid-38c1b3a0df6c.herokuapp.com/) - Deployed application on Heroku + mobile version
 
 A simple Rails application allowing carriers to submit bids for goods delivery on selected routes. The platform provides transparency on winning bids, helping carriers adjust their offers to remain competitive.
 
