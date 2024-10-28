@@ -16,7 +16,7 @@ class BidsController < ApplicationController
     @bid = current_carrier.bids.new(bid_params)
 
     if @bid.save
-      redirect_to bids_path, flash: { success: 'Your bid has been submitted successfully. You can track its status on the Your Bids Overview page.' }
+      redirect_to bids_path, flash: { success: I18n.t('bids.created') }
     else
       flash.now[:danger] = @bid.errors.full_messages.to_sentence
       render :new
@@ -27,7 +27,7 @@ class BidsController < ApplicationController
 
   def update
     if @bid.update(bid_params)
-      redirect_to bids_path, flash: { success: 'Your bid has been updated successfully. You can track its status on the Your Bids Overview page.' }
+      redirect_to bids_path, flash: { success: I18n.t('bids.updated') }
     else
       flash.now[:danger] = @bid.errors.full_messages.to_sentence
       render :edit
@@ -37,17 +37,17 @@ class BidsController < ApplicationController
   def fetch_lowest_bid
     route = params[:route]
     load_type = params[:load_type]
-    return render json: { error: 'Load type or route not found.' }, status: 404 if route.blank? || load_type.blank?
+    return render json: { error: I18n.t('bids.route_load_not_found') }, status: 404 if route.blank? || load_type.blank?
 
     lowest_bid = Bid.where(shipping_route_id: route, load_type_id: load_type).minimum(:price)
-    return render json: { error: 'No bids found for this combination Route/Load Type' }, status: 404 unless lowest_bid
+    return render json: { error: I18n.t('bids.not_found_combination') }, status: 404 unless lowest_bid
 
     render json: { lowestBid: lowest_bid }, status: 200
   end
 
   def destroy
     if @bid.destroy
-      redirect_to bids_path, flash: { success: 'Your bid has been deleted successfully.' }
+      redirect_to bids_path, flash: { success: I18n.t('bids.deleted') }
     else
       redirect_to bids_path, flash: { danger: @bid.errors.full_messages.to_sentence }
     end
@@ -61,6 +61,6 @@ class BidsController < ApplicationController
 
   def set_bid
     @bid = current_carrier.bids.find_by(id: params[:id])
-    redirect_to root_path, alert: 'Bid not found.' unless @bid
+    redirect_to root_path, alert: I18n.t('bids.not_found') unless @bid
   end
 end
