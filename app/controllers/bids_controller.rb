@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BidsController < ApplicationController
+  before_action :check_login
   before_action :set_bid, only: %i[edit update destroy]
 
   def index
@@ -48,7 +49,7 @@ class BidsController < ApplicationController
     if @bid.destroy
       redirect_to bids_path, flash: { success: 'Your bid has been deleted successfully.' }
     else
-      redirect_to bets_path, flash: { danger: @bid.errors.full_messages.to_sentence }
+      redirect_to bids_path, flash: { danger: @bid.errors.full_messages.to_sentence }
     end
   end
 

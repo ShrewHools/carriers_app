@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_carrier
 
   before_action :current_carrier
-  before_action :check_login
 
   def current_carrier
     @current_carrier ||= Carrier.find_by(id: cookies[:carrier_id])
