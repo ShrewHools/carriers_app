@@ -37,4 +37,5 @@ yarn-debug.log*
 
 # Ignore rubymine files
 .idea/
-
+#ignore simplecov
+coverage
