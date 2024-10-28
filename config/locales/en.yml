@@ -11,6 +11,8 @@ en:
           attributes:
             origin:
               taken: "The route combination already exists"
+  home:
+    title: 'Welcome to ShipBid – Efficient Logistics Bidding'
   bids:
     created: 'Your bid has been submitted successfully. You can track its status on the Your Bids Overview page.'
     updated: 'Your bid has been updated successfully. You can track its status on the Your Bids Overview page.'
