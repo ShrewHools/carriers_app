@@ -1,24 +1,32 @@
-# README
+# 🚛 Logistics Bidding Platform
+[ShipBid](https://ship-bid-38c1b3a0df6c.herokuapp.com/) - Deployed application on Heroku + mobile version
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Rails application allowing carriers to submit bids for goods delivery on selected routes. The platform provides transparency on winning bids, helping carriers adjust their offers to remain competitive.
 
-Things you may want to cover:
+## 📋 Features
 
-* Ruby version
+- **Easy Bidding Process** – Simple form for carriers to create and update bids.
+- **Transparent Competition** – Real-time feedback on the lowest bid for each route/load type combination.
+- **Route Flexibility** – Multiple routes and load types to cover various delivery needs.
 
-* System dependencies
+## 🛠️ Usage
 
-* Configuration
+### Submit a Bid
+- **Navigate to "New Bid" page.**
+- **Select a Route and Load Type.**
+- **Enter your Bid Price.**
+- **Submit to save the bid and compete with others.**
 
-* Database creation
+### View Bids
+On the Your Bids Overview page, see your submitted bids along with the current lowest bid for each route/load type. If your bid is not winning, consider lowering your price to remain competitive.
 
-* Database initialization
+## 🚀 Getting Started
 
-* How to run the test suite
+### Prerequisites
 
-* Services (job queues, cache servers, search engines, etc.)
+Make sure you have the following installed:
 
-* Deployment instructions
-
-* ...
+- **Ruby**: Version 2.6.6
+- **Rails**: Version 6.1.7
+- **PostgreSQL**: Recommended database
+   

@@ -1,0 +1,32 @@
+.bid_form {
+  width: 20%;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  @include breakpoint(xs) {
+    width: 90%;
+  }
+
+  @include breakpoint(sm) {
+    width: 80%;
+  }
+
+  @include breakpoint(md) {
+    width: 40%;
+  }
+
+  #minBidInfo {
+    display: none;
+    padding: 10px;
+    background-color: #e9f7ef;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+    border-radius: 5px;
+
+    .input-group {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

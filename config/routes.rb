@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'home#index'
+  get 'home/index'
+
+  resources :bids do
+    collection do
+      get :fetch_lowest_bid
+    end
+  end
+  post 'sign_in' => 'sign_in#create'
+  delete 'logout' => 'sign_in#destroy'
 end

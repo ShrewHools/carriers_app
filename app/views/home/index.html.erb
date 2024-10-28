@@ -1,0 +1,47 @@
+<section class="home">
+  <h1 class="mt-5">Welcome to ShipBid – Efficient Logistics Bidding</h1>
+  <p>ShipBid lets carriers compete for the best freight rates across various routes and load types. Submit your bids, track your status, and win more contracts</p>
+
+  <section class="container mt-4">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 text-center shadow-sm">
+          <div class="card-body">
+            <i class="bi bi-lightning-charge fs-1 text-primary"></i>
+            <h5 class="card-title mt-3">Easy Bidding Process</h5>
+            <p class="card-text">A straightforward system for placing bids and managing your submissions with ease.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 text-center shadow-sm">
+          <div class="card-body">
+            <i class="bi bi-eye fs-1 text-success"></i>
+            <h5 class="card-title mt-3">Transparent Competition</h5>
+            <p class="card-text">Check your bid status and see if you need to adjust your prices to stay competitive.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 text-center shadow-sm">
+          <div class="card-body">
+            <i class="bi bi-truck fs-1 text-warning"></i>
+            <h5 class="card-title mt-3">Route Flexibility</h5>
+            <p class="card-text">Choose from a variety of routes and load types to maximize your opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <% if @current_carrier %>
+    <div class="mt-5">
+      <%= link_to 'Your Bids Overview', bids_path, class: 'btn btn-primary' %>
+      <%= link_to 'Create New Bid', new_bid_path, class: 'btn btn-success' %>
+    </div>
+  <% else %>
+    <button type="button" class="mt-5 btn btn-primary" data-bs-toggle="modal" data-bs-target="#signInModal">
+      Sign In/Up as a Carrier
+    </button>
+  <% end %>
+</section>

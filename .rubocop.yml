@@ -1,0 +1,19 @@
+AllCops:
+  TargetRubyVersion: 2.6.6
+  UseCache: true
+  Include:
+    - 'lib/**/*'
+    - 'app/**/*'
+    - 'spec/**/*'
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'test/**/*'
+    - 'vendor/**/*'
+    - 'db/schema.rb'
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  NewCops: enable
+
+Style/Documentation:
+  Enabled: false

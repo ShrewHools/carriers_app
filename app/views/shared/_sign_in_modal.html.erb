@@ -1,0 +1,19 @@
+<div class="modal fade" id="signInModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Sign In/Up as a Carrier</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_tag sign_in_path, method: :post do %>
+          <div class="mb-3">
+            <%= label_tag :company_name, 'Company Name', class: 'form-label' %>
+            <%= text_field_tag :company_name, nil, class: 'form-control' %>
+          </div>
+          <%= submit_tag 'Sign In', class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
