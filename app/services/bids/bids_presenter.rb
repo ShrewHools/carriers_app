@@ -22,7 +22,7 @@ module Bids
     end
 
     def on_empty
-      yield if @bid_details.empty?
+      yield if @bid_details.blank?
     end
 
     private
