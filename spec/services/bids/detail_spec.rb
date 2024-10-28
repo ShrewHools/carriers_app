@@ -18,11 +18,11 @@ describe Bids::Detail do
   end
 
   it '#price' do
-    expect(subject.price).to eq('1000.00 $')
+    expect(subject.price).to eq("#{bid.price} $")
   end
 
   it '#lowest_price' do
-    expect(subject.lowest_price).to eq('2000.00 $')
+    expect(subject.lowest_price).to eq("#{lowest_bid} $")
   end
 
   it '#on_win' do
